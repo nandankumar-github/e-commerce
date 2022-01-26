@@ -1,0 +1,108 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block css %}
+<style>
+    .cart_item .cart_header input {
+        border: none;
+        border-bottom: 1px solid blue;
+        outline: none;
+    }
+
+    .mainitem .update_cart button {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        border: none;
+        outline: none;
+        border: 1px solid black;
+        opacity: .5;
+    }
+
+    .mainitem .update_cart input {
+        width: 40px;
+    }
+    .offer a{
+        cursor: pointer;
+    }
+    .my_product_cart{
+        position: relative;
+    }
+    .place_order{
+        position: absolute;
+        right:3px ;
+        bottom: 0px;
+    }
+</style>
+
+{% endblock css %}
+
+
+{% block content %}
+<div class="container">
+    <div class="cart mt-4">
+        <div class="row">
+            <!-- cart -->
+            <div class="col-8 bg-white shadow border my_product_cart">
+                <div class="cart_item">
+                    <div class="cart_header d-flex justify-content-between py-4">
+                        <span>My Cart (2)</span>
+                        <span>
+                            <span>Deliver To</span>
+                            <i class="fas fa-map-marked-alt opacity-50 mx-2"></i>
+                            <input type="text" name="" id="" placeholder="Enter delivery pincode">
+                        </span>
+                    </div>
+                    
+                    <!-- cart product -->
+                    <div>
+                        {% include 'shop/component/cart_component.html' %}
+                    </div>
+                    <!-- end of cart product -->
+                </div>
+                <div class="place_order text-end pe-3 pb-3">
+                    <button class="btn btn-outline-success fw-bolder px-5">Place Order</button>
+                </div>
+            </div>
+
+            <!-- Price detail -->
+            <div class="col-4">
+                <div class="price_detail bg-white shadow">
+
+                    <div class="row px-4 py-4">
+                        <h5 class="col-12 opacity-50 mb-5">PRICE DETAILS</h5>
+                        <div class="col-6 mb-3">Price (2 items)</div>
+                        <div class="col-6 text-end">₹1,898</div>
+                        <div class="col-6 mb-3">Discount</div>
+                        <div class="col-6 text-end">− ₹1,104</div>
+                        <div class="col-6 mb-3">Delivery Charges</div>
+                        <div class="col-6 text-end">₹40</div>
+                        <div class="col-6">Total Amount</div>
+                        <div class="col-6 text-end mb-3">₹834</div>
+                        <hr>
+                        <div class="col-12 text-success">You will save ₹1,064 on this order</div>
+                    </div>
+                </div>
+                <!-- Add item -->
+                <div class="offer bg-white shadow mt-4">
+                    <div class="row px-4 py-4">
+                        <div class="col-10 fw-bolder">
+                            <p>Add items worth ₹75 more for FREE<br>delivery</p>
+
+                        </div>
+                        <div class="col-2"><i class="fas fa-shuttle-van"></i></div>
+                        <div class="col-12 mb-5">Eligible only for products</div>
+                        <a class="col-12 d-flex justify-content-between">
+                            <div>Browse Super Value store</div>
+                            <div>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

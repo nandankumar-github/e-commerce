@@ -1,0 +1,125 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block css %}
+<style>
+  .product_view img {
+    height: 300px;
+    width: 100%;
+  }
+
+  .product_view .rating {
+    width: fit-content;
+    padding: 5px 15px;
+    border-radius: 20px;
+  }
+
+  .product_view .size {}
+
+  .product_view .size button {
+    border: none;
+    background-color: none;
+    outline: none;
+    padding: 2px 7px;
+    margin-right: 5px;
+    margin-left: 10px;
+
+  }
+  .image_section .buy_cart button{
+    border: none;
+    background-color: none;
+    outline: none;
+    border: 1px solid black;
+    padding: 10px 40px;
+    transition: all .3s ease-in-out;
+  }
+  .image_section .buy_cart button:hover{
+    color: white;
+    background-color: black;
+    
+  }
+
+</style>
+{% endblock css %}
+
+
+{% block content %}
+<div class="container mt-5 product_view">
+  <div class="row">
+    <div class="col-4">
+      <div class="image_section">
+        <div class="image">
+          <img src="{% static 'shop/images/product.jpeg' %}" alt="">
+        </div>
+        
+        <div class="mt-5 d-flex justify-content-center buy_cart">
+          <button type="button"  id="{{product.id}},{{request.user.id}}" onclick="AddToCart(id)">
+            <span><i class="fas fa-shopping-cart"></i></span>
+            <span>Add To Cart</span>
+          </button>
+          <button class="ms-4">
+            <span><i class="fas fa-bolt"></i></span>
+            <span>Buy Now</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-8">
+      <div>
+        <h5>{{product.product_name}}</h5>
+
+        <p class="d-flex align-items-center">
+        <p style="color:#5DBF49;" class="m-0">Special Price</p>
+        <div class="">
+          <span class="fs-2 fw-bolder">&#8377; {{discounted_price}}</span>
+          <del class="opacity-50 ms-3">&#8377; {{product.product_price}}</del>
+          <span class="ms-3" style="color:#5DBF49;">{{product.product_discount}}% off</span>
+          <span></span>
+        </div>
+
+        </p>
+        <p class="rating d-flex align-items-center" style="color:white; background-color:#5DBF49;">
+          <span class="me-1">{{product.rating}}</span>
+          <i class="fas fa-star text-white" style="font-size: 10px;"></i>
+        </p>
+        <p class="offer">
+        <h5>Available offers</h5>
+        <p>
+          <span><i class="fab fa-buffer"></i></span>
+          <span>Special PriceGet extra 15% off (price inclusive of discount)T&C</span>
+        </p>
+        <p>
+          <span><i class="fab fa-buffer"></i></span>
+          <span>Partner OfferSign up for Flipkart Pay Later and get Flipkart Gift Card worth ₹100*Know More</span>
+        </p>
+        <p>
+          <span><i class="fab fa-buffer"></i></span>
+          <span>Bank Offer5% Unlimited Cashback on Flipkart Axis Bank Credit CardT&C</span>
+        </p>
+        </p>
+        <p class="size">
+          <span>Size</span>
+          <button class="shadow">30</button>
+          <button class="shadow">32</button>
+          <button class="shadow">34</button>
+          <button class="shadow">36</button>
+          <button class="shadow">38</button>
+          <button class="shadow">40</button>
+        </p>
+        <p class="d-flex align-items-center">
+          <span class="fs-4 me-3">Brands</span>
+          <p class='ms-4'>{{product.product_brand}}</p>
+        </p>
+
+        <p>
+        <h5>Product Description</h5>
+        <p class="ms-2">{{product.product_description}}</p>
+        </p>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

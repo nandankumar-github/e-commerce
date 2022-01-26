@@ -1,0 +1,23 @@
+body{
+    background-color: #ECF4FA;
+    
+}
+.mycontainer{
+    padding: 0px 50px;
+}
+
+nav{
+    background-color: #2874F0;
+}
+nav input{
+    outline: none;
+    padding-left: 10px;
+}
+nav .login button{
+    border: none;
+    background: none;
+    outline: none;
+    padding: 5px 40px;
+    color: #2874F0;
+    background: white;
+}

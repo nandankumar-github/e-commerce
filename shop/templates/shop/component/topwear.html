@@ -1,0 +1,89 @@
+{% load static %}
+
+
+
+
+
+<div>
+
+    <div class="header d-flex border py-4 border-bottom">
+        <div class="heading mycontainer">Top Wear</div>
+    </div>
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+            <div class="row">
+                {% for item in topwear %}
+            
+                <div class="col-2">
+                    <a class="text-dark text-decoration-none" href="{% url 'product_detail' item.id %}">
+                    <div class="items">
+                        <div class="image">
+                            <img src="{% static 'shop/images/product.jpeg' %}" alt="">
+                        </div>
+                        <div class="item_detail d-flex flex-column justify-content-center text-center">
+                            <span class="item_name">{{item.product_name}}</span>
+                            <span class="item_price">$ {{item.product_price}}</span>
+                            <span class="item_category opacity-50">{{item.product_brand}}</span>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+            
+                {% if forloop.counter|divisibleby:6 %}
+                </div>
+                </div>
+                <div class="carousel-item">
+                <div class="row">
+                {% endif %}
+                {% ifequal forloop.counter topwear_len %}
+                    </div>
+                    </div>
+                {% endifequal %}
+
+                {% endfor %}
+                
+
+        </div>
+        <button class="carousel-control-prev bg-dark" style="width: 20px;" type="button"
+            data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next bg-dark" style="width: 20px;" type="button"
+            data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+
+
+
+    <!-- <div class="product mycontainer">
+        <div class="row">
+            <div class="col-2">dfjkl</div>
+            <div class="col-2">dslfkj</div>
+            <div class="col-2">dslkfj</div>
+            <div class="col-2">dlfkj</div>
+            <div class="col-2">dlkfjs</div>
+            <div class="col-2">dlksfj</div>
+        </div>
+    </div> -->
+
+
+
+
+
+</div>
